@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Risk Assessment Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Roboto', sans-serif; background: #f9f9f9; color: #333; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); max-width: 500px; width: 100%; text-align: center; }
+        h1 { color: #ff6f61; font-size: 2rem; }
+        p { color: #666; font-size: 1rem; }
+        .question { margin: 20px 0; }
+        .btn { padding: 10px 20px; background: #ff6f61; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+        .btn:hover { background: #e55950; }
+        .result { font-size: 1.5rem; color: #333; margin-top: 20px; }
+        .options input { margin: 0 10px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Heart Disease Risk Assessment Quiz</h1>
+        <p>Answer the following questions to assess your risk level for heart disease.</p>
+
+        <div class="question" id="questionContainer">
+            <p id="questionText">Loading question...</p>
+            <div class="options">
+                <label><input type="radio" name="answer" value="1"> Yes</label><br>
+                <label><input type="radio" name="answer" value="0"> No</label><br>
+            </div>
+        </div>
+
+        <button class="btn" onclick="nextQuestion()">Next</button>
+
+        <div class="result" id="resultContainer" style="display: none;">
+            <p>Your heart disease risk score is: <span id="riskScore"></span></p>
+            <p id="riskLevel"></p>
+            <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const questions = [
+            { text: "Do you smoke?", value: 1 },
+            { text: "Do you have a family history of heart disease?", value: 1 },
+            { text: "Do you exercise regularly (at least 3 times a week)?", value: -1 },
+            { text: "Do you have high blood pressure?", value: 1 },
+            { text: "Are you overweight or obese?", value: 1 },
+            { text: "Do you consume a lot of fatty or fried foods?", value: 1 },
+            { text: "Do you feel stressed often?", value: 1 },
+            { text: "Do you regularly consume alcohol?", value: 1 },
+            { text: "Are you over 45 years old?", value: 1 }
+        ];
+
+        let currentQuestion = 0;
+        let riskScore = 0;
+
+        function loadQuestion() {
+            // Display the current question
+            const questionText = document.getElementById("questionText");
+            questionText.textContent = questions[currentQuestion].text;
+            document.getElementsByName("answer")[0].checked = false;
+            document.getElementsByName("answer")[1].checked = false;
+        }
+
+        function nextQuestion() {
+            // Get user's answer
+            const answer = document.querySelector('input[name="answer"]:checked');
+            if (answer) {
+                // Update risk score based on answer
+                const answerValue = parseInt(answer.value);
+                riskScore += answerValue * questions[currentQuestion].value;
+
+                // Move to the next question or display results
+                currentQuestion++;
+                if (currentQuestion < questions.length) {
+                    loadQuestion();
+                } else {
+                    showResults();
+                }
+            } else {
+                alert("Please select an answer to continue.");
+            }
+        }
+
+        function showResults() {
+            // Calculate and display the risk level based on the final score
+            document.getElementById("questionContainer").style.display = "none";
+            document.getElementById("resultContainer").style.display = "block";
+
+            document.getElementById("riskScore").textContent = riskScore;
+
+            let riskLevel = "";
+            if (riskScore <= 1) {
+                riskLevel = "Low risk - Great job! Keep up the healthy habits.";
+            } else if (riskScore <= 3) {
+                riskLevel = "Moderate risk - Consider improving your lifestyle and consulting a healthcare provider.";
+            } else {
+                riskLevel = "High risk - It's important to seek medical advice and make lifestyle changes.";
+            }
+            document.getElementById("riskLevel").textContent = riskLevel;
+        }
+
+        function restartQuiz() {
+            // Reset quiz state
+            currentQuestion = 0;
+            riskScore = 0;
+            document.getElementById("questionContainer").style.display = "block";
+            document.getElementById("resultContainer").style.display = "none";
+            loadQuestion();
+        }
+
+        // Initialize the quiz
+        document.addEventListener("DOMContentLoaded", loadQuestion);
+    </script>
+
+</body>
+</html>

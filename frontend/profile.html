@@ -1,0 +1,233 @@
+\\<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | Health Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f9f9fb;
+            color: #333;
+        }
+
+        header {
+            background: url('/img_1.webp') no-repeat center center;
+            background-size: cover;
+            height: 250px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.2rem;
+            position: absolute;
+            top: 80px;
+            width: 100%;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #1e90ff;
+            margin-bottom: 20px;
+        }
+
+        .profile-form {
+            background: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .profile-form input,
+        .profile-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .profile-form button {
+            padding: 12px 30px;
+            background: #1e90ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .profile-form button:hover {
+            background: #0056b3;
+        }
+
+        .welcome-message {
+            font-size: 1.5rem;
+            color: #333;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="profile.html">Profile</a>
+            <a href="settings.html">Settings</a>
+            <a href="logout.html" onclick="logout()">Logout</a>
+        </div>
+        <div class="header-text">Your Profile</div>
+    </header>
+
+    <div class="container">
+        <h1>Update Your Profile Information</h1>
+        <p>Update your personal details and health condition information for accurate predictions.</p>
+
+        <!-- Profile Form -->
+        <div class="profile-form">
+            <h2>Update Profile</h2>
+            <form id="profileForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="number" id="age" placeholder="Age" required>
+
+                <label for="disease">What diseases do you currently face? (Select all that apply)</label>
+                <select id="disease" multiple required>
+                    <option value="heart_disease">Heart Disease</option>
+                    <option value="high_blood_pressure">High Blood Pressure</option>
+                    <option value="heart_attack">Heart Attack</option>
+                    <option value="diabetes">Diabetes</option>
+                    <option value="none">None</option>
+                </select>
+
+                <button type="submit">Update Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Health Prediction Inc. | Designed with ❤️ by YourTeam</p>
+    </footer>
+
+    <!-- JavaScript to handle profile update -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve profile data from localStorage
+            const username = localStorage.getItem("username");
+            const email = localStorage.getItem("email");
+            const age = localStorage.getItem("age");
+            const diseases = localStorage.getItem("diseases");
+
+            // Pre-fill the form fields if available
+            if (username && email && age && diseases) {
+                document.getElementById("username").value = username;
+                document.getElementById("email").value = email;
+                document.getElementById("age").value = age;
+
+                // Set disease selection
+                const diseaseArray = diseases.split(',');
+                const diseaseSelect = document.getElementById("disease");
+                for (let option of diseaseSelect.options) {
+                    if (diseaseArray.includes(option.value)) {
+                        option.selected = true;
+                    }
+                }
+            }
+        });
+
+        // Handle form submission to update profile
+        document.getElementById("profileForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const updatedUsername = document.getElementById("username").value;
+            const updatedEmail = document.getElementById("email").value;
+            const updatedAge = document.getElementById("age").value;
+            const diseaseSelect = document.getElementById("disease");
+            const selectedDiseases = Array.from(diseaseSelect.selectedOptions).map(option => option.value).join(',');
+
+            // Save updated data to localStorage
+            localStorage.setItem("username", updatedUsername);
+            localStorage.setItem("email", updatedEmail);
+            localStorage.setItem("age", updatedAge);
+            localStorage.setItem("diseases", selectedDiseases);
+
+            // Optionally, display success message
+            alert("Profile updated successfully!");
+        });
+
+        // Logout function to clear localStorage and redirect to login page
+        function logout() {
+            localStorage.removeItem("loginStatus");
+            localStorage.removeItem("username");
+            localStorage.removeItem("email");
+            localStorage.removeItem("age");
+            localStorage.removeItem("diseases");
+            window.location.href = "login.html";
+        }
+    </script>
+
+</body>
+</html>

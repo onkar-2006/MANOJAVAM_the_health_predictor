@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help - Health Prediction Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Reset basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f9f9fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header with navigation */
+        header {
+            background: #1e90ff;
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #1e90ff;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        footer {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="help.html">Help</a>
+        </div>
+    </header>
+
+    <!-- Help Section -->
+    <div class="container">
+        <h1>Help & Support</h1>
+        <p>If you're having trouble using the platform, please refer to the following common questions and answers, or contact our support team for assistance.</p>
+
+        <h2>Common Questions</h2>
+        <ul>
+            <li><strong>How do I use the health prediction feature?</strong> 
+                <p>Simply fill in the necessary health data such as age, cholesterol level, blood pressure, etc., and the system will generate predictions based on this information.</p>
+            </li>
+            <li><strong>What kind of predictions does the system make?</strong> 
+                <p>The system predicts risks for conditions such as heart disease, hypertension, and cancer, based on your provided health data.</p>
+            </li>
+            <li><strong>Is my data secure?</strong>
+                <p>Yes, we take your privacy seriously and ensure that all data entered is securely stored and not shared with any third parties.</p>
+            </li>
+        </ul>
+
+        <h2>Contact Support</h2>
+        <p>If you are unable to find an answer to your question, please don't hesitate to contact our support team.</p>
+        <p>Email: <a href="mailto:support@healthprediction.com">support@healthprediction.com</a></p>
+        <p>Phone: 1-800-123-4567</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Health Prediction Inc. | Designed with ❤️ by YourTeam</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Prediction Dashboard</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="signup.html">
+    <link rel="stylesheet" href="forget_password.html">
+    <link rel="stylesheet" href="reset_password_instructions.html">
+    <style>
+        /* Reset basic styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f9f9fb;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header with larger background image and text above */
+        header {
+            position: relative;
+            background: url('img_1.webp') no-repeat center center;
+            background-size: cover;
+            height: 250px; /* Increased height */
+            text-align: center;
+            padding: 0;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.2rem;
+            position: absolute;
+            top: 80px;
+            width: 100%;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(0, 86, 179, 0.8);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #1e90ff;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        /* Fade animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Card styles */
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 30%;
+            min-width: 280px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInCard 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeInCard {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card i {
+            font-size: 4rem;
+            color: #1e90ff;
+            margin-bottom: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .card:hover i {
+            color: #0056b3;
+        }
+
+        .card h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .card a {
+            display: inline-block;
+            background: #1e90ff;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .card a:hover {
+            background: #0056b3;
+        }
+
+        /* Disease Selection Section */
+        .disease-selection {
+            margin-top: 30px;
+        }
+
+        .disease-selection select {
+            padding: 10px;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 200px;
+            margin-right: 10px;
+        }
+
+        .disease-selection button {
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            background: #1e90ff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .disease-selection button:hover {
+            background: #0056b3;
+        }
+
+        /* Chatbot Icon */
+        .chatbot-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #1e90ff;
+            color: white;
+            font-size: 2rem;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 9999;
+            transition: transform 0.3s ease;
+        }
+
+        .chatbot-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Chatbot Window (Initially Hidden) */
+        .landbot-chat {
+            position: fixed;
+            bottom: 20px;
+            right: -350px;
+            width: 300px;
+            height: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: right 0.5s ease-in-out;
+            z-index: 9998;
+        }
+
+        .landbot-chat iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e90ff;
+            color: #fff;
+            padding: 20px 0;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%;
+                margin-bottom: 30px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .landbot-chat {
+                width: 90%;
+                height: 400px;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Navigation -->
+    <header>
+        <div class="navbar">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="help.html">Help</a>
+            <a href="http://localhost/AUTH/index.php#">login</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Welcome to Health Prediction Dashboard</h1>
+        <p>Leverage advanced AI to predict and monitor health risks. Choose the disease you're facing below to get started.</p>
+
+        <!-- Disease Selection Section -->
+        <div class="disease-selection">
+            <h2>Which disease are you facing?</h2>
+            <select id="diseaseSelect">
+                <option value="">Select a Disease</option>
+                <option value="heart">Heart Disease</option>
+                <option value="bp">Blood Pressure</option>
+                <option value="cancer">Cancer</option>
+            </select>
+            <button onclick="redirectToForm()">Go</button>
+        </div>
+
+        <!-- Card Container -->
+        <div class="card-container">
+            <!-- Heart Disease Card -->
+            <div class="card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Heart Disease Prediction</h3>
+                <p>Predict the risk of heart disease based on medical data such as cholesterol, blood pressure, and more.</p>
+                <a href="heart_disease.html">Start Prediction</a>
+            </div>
+
+            <!-- Cancer Prediction Card -->
+            <div class="card">
+                <i class="fas fa-bomb"></i>
+                <h3>Cancer Prediction</h3>
+                <p>Analyze your health data to predict the potential risk of cancer using key lifestyle and genetic information.</p>
+                <a href="cancer_prediction.html">Start Prediction</a>
+            </div>
+
+            <!-- Blood Pressure Prediction Card -->
+            <div class="card">
+                <i class="fas fa-tint"></i>
+                <h3>Blood Pressure Prediction</h3>
+                <p>Assess the risk of high blood pressure using your health metrics like weight, age, and activity level.</p>
+                <a href="bp_prediction.html">Start Prediction</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot Icon -->
+    <div class="chatbot-icon" onclick="toggleChatbot()">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <!-- Landbot Chatbot Integration (Initially Hidden) -->
+    <div class="landbot-chat" id="landbot-chat">
+        <iframe src="https://landbot.online/v3/H-2665737-X5AAERG3447MN45P/index.html" title="Landbot Chatbot"></iframe>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Health Prediction Inc. | Designed with ❤️ by YourTeam</p>
+    </footer>
+
+    <!-- JavaScript to Toggle Chatbot Visibility -->
+    <script>
+        function toggleChatbot() {
+            var chatbot = document.getElementById("landbot-chat");
+            var rightPosition = chatbot.style.right;
+
+            if (rightPosition === "0px") {
+                chatbot.style.right = "-350px";  // Move off-screen
+            } else {
+                chatbot.style.right = "0";  // Move back on-screen
+            }
+        }
+
+        // Redirect to form based on disease selection
+        function redirectToForm() {
+            var diseaseSelect = document.getElementById("diseaseSelect");
+            var selectedDisease = diseaseSelect.value;
+
+            if (selectedDisease === "heart") {
+                window.location.href = "heart_disease_form.html";  // Redirect to Heart Disease Form
+            } else if (selectedDisease === "bp") {
+                window.location.href = "blood_pressure_form.html";  // Redirect to Blood Pressure Form
+            } else if (selectedDisease === "cancer") {
+                window.location.href = "cancer_form.html";  // Redirect to Cancer Form
+            } else {
+                alert("Please select a disease to proceed.");
+            }
+        }
+    </script>
+
+</body>
+</html>

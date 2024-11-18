@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Risk Assessment</title>
+    <style>
+        /* Styling for form */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9fb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #1e90ff;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        .question {
+            margin-bottom: 15px;
+        }
+
+        .question h3 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            background: #1e90ff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Heart Disease Risk Assessment</h1>
+        <form id="heartForm">
+            <!-- 15 Heart Disease related questions -->
+            <div class="question">
+                <h3>1. Do you experience chest pain during physical activity?</h3>
+                <label><input type="radio" name="q1" value="5" required> Frequently</label>
+                <label><input type="radio" name="q1" value="3"> Occasionally</label>
+                <label><input type="radio" name="q1" value="0"> Rarely or Never</label>
+            </div>
+            <div class="question">
+                <h3>2. Do you have high blood pressure?</h3>
+                <label><input type="radio" name="q2" value="5" required> Yes</label>
+                <label><input type="radio" name="q2" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>3. Do you smoke?</h3>
+                <label><input type="radio" name="q3" value="5" required> Yes</label>
+                <label><input type="radio" name="q3" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>4. Is your diet high in saturated fats?</h3>
+                <label><input type="radio" name="q4" value="5" required> Yes</label>
+                <label><input type="radio" name="q4" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>5. Do you have a family history of heart disease?</h3>
+                <label><input type="radio" name="q5" value="5" required> Yes</label>
+                <label><input type="radio" name="q5" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>6. Are you physically inactive?</h3>
+                <label><input type="radio" name="q6" value="5" required> Yes</label>
+                <label><input type="radio" name="q6" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>7. Do you often feel stressed or anxious?</h3>
+                <label><input type="radio" name="q7" value="5" required> Yes</label>
+                <label><input type="radio" name="q7" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>8. Are you overweight or obese?</h3>
+                <label><input type="radio" name="q8" value="5" required> Yes</label>
+                <label><input type="radio" name="q8" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>9. Do you have high cholesterol levels?</h3>
+                <label><input type="radio" name="q9" value="5" required> Yes</label>
+                <label><input type="radio" name="q9" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>10. Do you have diabetes?</h3>
+                <label><input type="radio" name="q10" value="5" required> Yes</label>
+                <label><input type="radio" name="q10" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>11. Are you over the age of 45?</h3>
+                <label><input type="radio" name="q11" value="5" required> Yes</label>
+                <label><input type="radio" name="q11" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>12. Do you drink alcohol regularly?</h3>
+                <label><input type="radio" name="q12" value="5" required> Yes</label>
+                <label><input type="radio" name="q12" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>13. Do you have difficulty sleeping or experience insomnia?</h3>
+                <label><input type="radio" name="q13" value="5" required> Yes</label>
+                <label><input type="radio" name="q13" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>14. Are you experiencing dizziness or shortness of breath?</h3>
+                <label><input type="radio" name="q14" value="5" required> Yes</label>
+                <label><input type="radio" name="q14" value="0"> No</label>
+            </div>
+            <div class="question">
+                <h3>15. Do you often feel fatigued or easily tired?</h3>
+                <label><input type="radio" name="q15" value="5" required> Yes</label>
+                <label><input type="radio" name="q15" value="0"> No</label>
+            </div>
+
+            <button type="button" onclick="calculateRisk()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function calculateRisk() {
+            const form = document.getElementById('heartForm');
+            const formData = new FormData(form);
+            let totalScore = 0;
+
+            for (let value of formData.values()) {
+                totalScore += parseInt(value);
+            }
+
+            if (totalScore >= 30) {
+                alert('You have a high risk of Heart Disease. Please check our Heart Disease page for suggestions.');
+                window.location.href = 'heart_disease.html';
+            } else {
+                alert('Your risk level is low. Stay healthy!');
+            }
+        }
+    </script>
+</body>
+</html>
