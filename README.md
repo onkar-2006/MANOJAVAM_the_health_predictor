@@ -46,7 +46,7 @@ SQLite/MySQL: Database for storing user data securely.
 
 ## Model Architecture  
 
-- **Heart disease Prediction**: Logistic Regression with an accuracy of 90%.  
+- **Heart disease Prediction**: Logistic Regression with an accuracy of 98 HUGGING FACE LINK-https://huggingface.co/onkar2006/heart_disease_prediction_model/blob/main/heart-attack-prediction-351a75.ipynb%.  
 - **Diabetes Prediction**: Random Forest Classifier with an accuracy of 99%.  
 The models utilize scikit-learn for implementation and are trained on a dataset with over 5,000 samples.  
 
