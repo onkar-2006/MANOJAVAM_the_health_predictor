@@ -50,8 +50,8 @@ SQLite/MySQL: Database for storing user data securely.
 - **Diabetes Prediction**: Random Forest Classifier with an accuracy of 99%.  
 The models utilize scikit-learn for implementation and are trained on a dataset with over 5,000 samples.  
 
-##data set- diabetes2.csv
-##SAMPLE DATA FOR THE Diabetes USED
+## data set- diabetes2.csv
+## SAMPLE DATA FOR THE Diabetes USED
 Pregnancies	Glucose	BloodPressure	SkinThickness	Insulin	BMI	Diabetes PedigreeFunction	   Age	 Outcome
 2         	138	     74	            35	          100 	  33.6	       0.127              25	 Yes
 5	          145	     80	            28	          105	  39.3	         0.263	            35	  No
@@ -68,8 +68,8 @@ Age: Age of the patient (years).
 Outcome: Whether the patient has diabetes (Yes) or not (No).
 
 
-##DATA USED -HEART.CSV
-##SAMPLE DATA USED  FOR THE HEART  DISEASE PREDICTION
+## DATA USED -HEART.CSV
+## SAMPLE DATA USED  FOR THE HEART  DISEASE PREDICTION
 age	sex	cp	trestbps	chol	fbs	restecg	thalach	exang	oldpeak	slope	ca	thal	target
 52	 1	0	  125	      212	   0	  1	     168	   0	    1	      2	   2	 3	   0
 53	 1	0	  140	      203	   1	  0	     155	   1	   3.1	    0	   0	 3	   0
