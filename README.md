@@ -68,7 +68,7 @@ Age: Age of the patient (years).
 Outcome: Whether the patient has diabetes (Yes) or not (No).
 
 
-## DATA USED -HEART.CSV
+## DATA USED -HEART.CSV DATASET-LINK-https://huggingface.co/datasets/buio/heart-disease
 ## SAMPLE DATA USED  FOR THE HEART  DISEASE PREDICTION
 age	sex	cp	trestbps	chol	fbs	restecg	thalach	exang	oldpeak	slope	ca	thal	target
 52	 1	0	  125	      212	   0	  1	     168	   0	    1	      2	   2	 3	   0
