@@ -35,14 +35,11 @@ SQLite/MySQL: Database for storing user data securely.
 
 - **Blood Pressure Model**:  
   - Accuracy: 99%  
-  - Precision: 98%  
-  - Recall: 97%
 
 **Evaluation Results:**  
 - **Heart disease Model**:  
   - Accuracy: 90%  
-  - Precision: 88%  
-  - Recall: 85%  
+  
 
 ## Model Architecture  
 
