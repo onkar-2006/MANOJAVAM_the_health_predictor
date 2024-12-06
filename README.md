@@ -1,5 +1,5 @@
 # MANOJAVAM-The-AI-Health-Disease-Predictor
-![IMG](MANOJAVAM_the_health_predictor/Screenshot 2024-11-18 163556.png)
+![IMG](https://github.com/onkar-2006/MANOJAVAM_the_health_predictor/blob/main/Screenshot%202024-11-18%20163556.png)
 
 
 
