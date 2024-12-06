@@ -1,5 +1,5 @@
 # MANOJAVAM-The-AI-Health-Disease-Predictor
-![IMG](Screenshot 2024-11-18 163556.png)
+![IMG](MANOJAVAM_the_health_predictor/Screenshot 2024-11-18 163556.png)
 
 
 
