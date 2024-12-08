@@ -3,7 +3,7 @@
 
 
 
-MANOJAVAM is an AI-powered platform designed to predict potential health risks based on medical and lifestyle data. By analyzing key health metrics such as blood pressure, cholesterol levels, age, and lifestyle habits, the system offers personalized insights and recommendations to help individuals prevent chronic diseases like heart disease, hypertension, and cancer.
+MANOJAVAM is an AI-powered platform designed To predict potential health risks based on medical and lifestyle data. By analyzing key health metrics such as blood pressure, cholesterol levels, age, and lifestyle habits, the system offers personalized insights and recommendations to help individuals prevent chronic diseases like heart disease, hypertension, and cancer.
 
 
 
